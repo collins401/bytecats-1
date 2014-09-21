@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>如何实现页面滑动动画效果</title>
+   <link rel="stylesheet" href="base.css">
+  <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+  <script type="text/javascript" src="js/scrollview.js"></script>
+  <style type="text/css">
+body { 
+  background: #f0f0f0; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #313131;
+}
+/** page structure **/
+#w {
+  display: block;
+  width: 750px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 45px;
+}
+
+#content {
+  display: block;
+  width: 100%;
+  background: #fff;
+  padding: 25px 20px;
+  padding-bottom: 35px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.floatr {
+  float: right;
+}
+
+.floatl { 
+  float: left;
+}
+
+.bigdl {
+  display: inline-block;
+  padding: 20px 42px;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
+  border-width: 1px;
+  border-style: solid;
+  border-color: #325bd0 #4561bf #1f4ebb;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #2f59c4;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#538ed8), to(#2f59c4));
+  background-image: -webkit-linear-gradient(top, #538ed8, #2f59c4);
+  background-image: -moz-linear-gradient(top, #538ed8, #2f59c4);
+  background-image: -ms-linear-gradient(top, #538ed8, #2f59c4);
+  background-image: -o-linear-gradient(top, #538ed8, #2f59c4);
+  background-image: linear-gradient(to bottom, #538ed8, #2f59c4);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 2px rgba(0,0,0,0.25);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 2px rgba(0,0,0,0.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 2px rgba(0,0,0,0.25);
+}
+.bigdl:hover {
+  text-decoration: none;
+  background: #3b64ce;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5e99e2), to(#3b64ce));
+  background-image: -webkit-linear-gradient(top, #5e99e2, #3b64ce);
+  background-image: -moz-linear-gradient(top, #5e99e2, #3b64ce);
+  background-image: -ms-linear-gradient(top, #5e99e2, #3b64ce);
+  background-image: -o-linear-gradient(top, #5e99e2, #3b64ce);
+  background-image: linear-gradient(to bottom, #5e99e2, #3b64ce);
+}
+.bigdl:active {
+  background: #294ba2;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3d77bf), to(#294ba2));
+  background-image: -webkit-linear-gradient(top, #3d77bf, #294ba2);
+  background-image: -moz-linear-gradient(top, #3d77bf, #294ba2);
+  background-image: -ms-linear-gradient(top, #3d77bf, #294ba2);
+  background-image: -o-linear-gradient(top, #3d77bf, #294ba2);
+  background-image: linear-gradient(to bottom, #3d77bf, #294ba2);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+  -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+}
+
+/** animated boxes **/
+.animBlock {
+  display: inline-block;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: relative;
+  -webkit-transition: all .55s ease-in;
+  -moz-transition: all .55s ease-in;
+  -ms-transition: all .55s ease-in;
+  -o-transition: all .55s ease-in;
+  transition: all .55s ease-in;
+}
+.animBlock[data-position="left"] { left: -20%; }
+.animBlock[data-position="right"] { right: -20%; }
+
+.animBlock[data-position="left"].viewed {
+  left: 0%;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.animBlock[data-position="right"].viewed {
+  right: 0%;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+/** various box positions **/
+#devicesTxt {
+  width: 300px;
+  padding-left: 15px;
+  padding-top: 12px;
+  text-align: center;
+}
+
+#appIcon {
+  padding-left: 35px;
+}
+
+#downloadTxt {
+  width: 410px;
+  height: 250px; /* keep similar height to app icon image */
+  padding-left: 10px;
+  text-align: center;
+}
+
+/** clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+  </style>
+</head>
+
+<body>  
+  <div id="w">
+    <div id="content">
+      <h1>如何实现页面滑动动画效果(jQuery+CSS3)</h1>
+      <p>滑动鼠标，网页内容随着滚动条下拉不断的以各种动画效果逐级呈现在浏览窗口中，能给传统而单调的滚动下拉浏览增加少许新意与感动。查看oppo官网效果»</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><img src="images/iphone4-models.jpg" alt="iphone4 black" width="700" height="450"></p>
+
+      
+
+      <h3>由外向内滑动</h3>
+      <section class="clearfix">
+        <div id="devices" data-position="left" class="notViewed animBlock floatl">
+          <img src="images/mac-product-graphics.png" alt="apple devices">
+        </div>
+        <div id="devicesTxt" data-position="right" class="notViewed animBlock floatr">
+          <h3>The New Product</h3>
+          <p>It works on all devices, I'm so serious. The responsive layout adapts to all screen resolutions.</p>
+        </div>
+      </section>
+      
+      <hr>
+      
+      <h2>由左向右滑动</h2>
+   
+      
+      <section>
+        <div id="iphonePerspective" data-position="right" data-offset="250" class="notViewed animBlock">
+          <img src="images/white-iphone-mockup.png" alt="white iphone flat ui">
+        </div>
+      </section>
+      
+      <br>
+      <hr>
+      <br>
+      
+      <section class="clearfix">
+        <div id="appIcon" data-position="left" data-offset="60" class="notViewed animBlock floatl">
+          <img src="images/ios-app-icon.png" alt="blue generic ios app icon">
+        </div>
+        
+        <div id="downloadTxt" data-position="right" data-offset="60" class="notViewed animBlock floatr">
+          <h3>Grab Your Copy Today!</h3>
+          <p>What are you waiting for?</p>
+          <p><a href="javascript:void(0)" class="bigdl">Download Now</a></p>
+        </div>
+      </section>
+    </div><!-- @end #content -->
+  </div><!-- @end #w -->
+</body>
+</html>

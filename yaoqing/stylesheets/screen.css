@@ -17,8 +17,6 @@ html, body {
   -moz-perspective: 200;
   perspective: 200;
 }
-
-/* line 55, ../sass/screen.scss */
 body {
   max-width: 640px;
   min-width: 320px;
@@ -62,7 +60,7 @@ section.scene:nth-child(6){
 }
 section.scene:nth-child(7){
    background:url(../img/g.jpg) no-repeat;background-size: cover;
-  -webkit-background-size: 100%;
+  -webkit-background-size:  cover;
 }
 /* line 93, ../sass/screen.scss */
 section.scene.one {
@@ -151,6 +149,7 @@ section.scene a {
   border:5px solid rgba(252,252,252,.5);border-radius: 100%;
   bottom: 10px;right: 10px;
   z-index: 10000;
+  text-shadow:1px 1px 1px #f60;
 }
 /*音乐MP3*/
 #musicControl { position:fixed;right:10px;top:50%;margin-top:-27px;display:inline-block;z-index:99999999}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>css3+js纯手工时钟特效(锤子时钟)-deep's blog</title>
+<meta name="keywords" content="css3时钟,css3特效,锤子时钟">
+<meta name="description" content="css3+js纯手工时钟特效，仿锤子时钟界面,给锤子时钟设计师点个赞">
+<meta name="author" content="deep's blog">
+<style type="text/css">
+	* { padding:0px; margin:0px; }
+	body { font:14px/1.5 'Segoe UI'; color:#4b4b4b;}
+	#container { 
+		position:relative; margin-left:auto; margin-right:auto; width:180px; height:180px; 
+		margin-top:50px; overflow:hidden; 
+		border-radius:100px;
+		box-shadow: 0 5px 15px 2px rgba(175,177,179,0.7); 
+	}
+	#clock {
+		position: absolute;width: 180px;height: 180px;
+	}
+	#clock li { 
+		position: absolute; display:inline-block;width: 20px;line-height: 20px;
+		text-align:center;font-size:18px; font-weight:600; text-shadow:#e8e8e8 2px 2px 1px; 
+	}
+	#clock li:nth-child(1){ left: 80px;top:15px;}
+	#clock li:nth-child(2){right: 15px;top:80px; }
+	.inner { 
+		width:156px; height:156px;border-radius:100%;margin: 12px auto;
+		box-shadow:inset 0 2px 4px 2px rgba(175,177,179,0.5); 	
+	}
+	#point { position:absolute; z-index:21; width:16px; height:16px; top:82px; left:82px; background:#484B4B; 
+		border-radius:100%;
+		box-shadow:0px 2px 3px rgba(37,37,38,0.5);
+	}
+	#hour { position:absolute; z-index:18; width:10px; height:40px; background:#5B5B5B;
+		top:50px; left:85px;border-radius: 5px 5px 0 0;
+		box-shadow:-1px 1px 2px rgba(0,0,0,0.5);
+		-webkit-transform-origin:5px 40px; 
+		-moz-transform-origin:5px 40px;
+		-ms-transform-origin:5px 40px;
+		-o-transform-origin:5px 40px;
+		transform-origin:5px 40px;
+	}
+	#min { position:absolute; z-index:19; width:10px; height:50px; background:#5B5B5B;
+		top:40px; left:85px;
+		border-radius: 5px 5px 0 0;
+		box-shadow:-1px 1px 3px rgba(0,0,0,0.5);
+		-webkit-transform-origin:5px 50px; 
+		-moz-transform-origin:5px 50px;
+		-ms-transform-origin:5px 50px;
+		-o-transform-origin:5px 50px;
+		transform-origin:5px 50px;
+	}
+	#second { 
+		position:absolute; z-index:22; width:2px; height:85px; background:#B65959;
+		top:25px; left:89px;
+		border-radius:1px;
+		box-shadow:-1px 2px 3px rgba(0,0,0,0.2);
+		-webkit-transform-origin:1px 65px; 
+		-moz-transform-origin:1px 65px;
+		-ms-transform-origin:1px 65px;
+		-o-transform-origin:1px 65px; 
+		transform-origin:1px 65px;
+	}
+	#second:before{
+		position: absolute;display: block;content: "";width: 0;height: 0;border:4px solid #B65959;
+		bottom: 16px;left: -3px;border-radius: 100%;
+	}
+    .tab{
+		width: 250px;margin: 80px auto 0;text-align: center;
+	}
+	.tab a{
+		color:#333;text-decoration: none;padding: 4px 15px;background: #333237;border-bottom: 4px solid #18171C;margin: 0 5px;color:#fff;
+		border-radius: 2px;
+	}
+</style>
+</head>
+<body>
+<div id="container">
+<ul id="clock">
+  <li>12</li>
+  <li>3</li>
+</ul>
+<div class="inner"></div>
+<div id="hour"></div>
+<div id="min"></div>
+<div id="second"></div>
+<div id="point"></div>
+</div>
+<div class="tab">
+	<a href="index2.html">反色</a>
+</div>
+<script type="text/javascript">
+	var hours;
+	var mins;
+	var seconds;
+	//获取当前时间起始位置
+	hours = (new Date().getHours()-12)*360/12 + (new Date().getMinutes()/60)*360/12 + "deg";
+	mins = new Date().getMinutes()*360/60 + "deg";
+	seconds = new Date().getSeconds()*360/60 + "deg";
+	var hh = document.getElementById('hour');
+	var mm = document.getElementById('min');
+	var ss = document.getElementById('second');
+	var time;
+	hh.style.cssText = "-moz-transform:rotate("+hours+");-webkit-transform:rotate("+hours+");-ms-transform:rotate("+hours+")-o-transform:rotate("+hours+");transform:rotate("+hours+");";
+	mm.style.cssText = "-moz-transform:rotate("+mins+");-webkit-transform:rotate("+mins+");-ms-transform:rotate("+mins+");-o-transform:rotate("+mins+");transform:rotate("+mins+");";
+	ss.style.cssText = "-moz-transform:rotate("+seconds+");-webkit-transform:rotate("+seconds+");-ms-transform:rotate("+seconds+");-o-transform:rotate("+seconds+");transform:rotate("+seconds+");";
+	//时间走动
+	time = setInterval(function(){
+	  seconds = new Date().getSeconds()*360/60;
+	  mins = new Date().getMinutes()*360/60;
+	  ss.style.cssText = "-moz-transform:rotate("+seconds+"deg);-webkit-transform:rotate("+seconds+"deg);-ms-transform:rotate("+seconds+"deg);-o-transform:rotate("+seconds+"deg);transform:rotate("+seconds+"deg);";
+	  if ( seconds == 0 ){
+	   mm.style.cssText = "-moz-transform:rotate("+mins+"deg);-webkit-transform:rotate("+mins+"deg);-ms-transform:rotate("+mins+"deg);-o-transform:rotate("+mins+"deg);transform:rotate("+mins+"deg);";
+	  }
+	  if ( mins == 0 ){
+	   hours = (new Date().getHours()-12)*360/12 + "deg";
+	   hh.style.cssText = "-moz-transform:rotate("+hours+");-webkit-transform:rotate("+hours+");-ms-transform:rotate("+hours+");-o-transform:rotate("+hours+");transform:rotate("+hours+");";
+	  }
+	}, 1000);
+</script>
+
+
+</body> 
+</html>

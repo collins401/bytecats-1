@@ -138,6 +138,30 @@ section.scene.two.after {
     z-index: 9999;
     position: relative;
 }
+.arrow-d{
+    position: absolute;bottom: 0;width: 100%;text-align: center;color:#fff;font-size: 18px;
+}
+.arrow-d.blank{color:#333;}
+.guidetop{
+    position: absolute;width: 20px;
+    height: 20px;
+    left: 50%;
+    margin-left: -10px;
+    bottom: 50px;
+    display: block;
+    z-index: 9998;
+    -webkit-animation: guideTop 1.5s infinite;
+}
+@-webkit-keyframes guideTop{
+    0%{-webkit-transform: translateY(42px); opacity: 0;}
+    60%{-webkit-transform: translateY(12px); opacity: 1;}
+    100%{-webkit-transform: translateY(0px); opacity: 0;}
+}
+@keyframes guideTop{
+    0%{transform: translateY(42px); opacity: 0;}
+    60%{transform: translateY(12px); opacity: 1;}
+    100%{transform: translateY(0px); opacity: 0;}
+}
 /*功能*/
 .nav{
   position: fixed;
@@ -164,7 +188,7 @@ section.scene.two.after {
   100%{-webkit-transform: rotateZ(360deg);}
 }
 #music_play_filter{width:100%;height:100%;overflow:hidden;position:fixed;top:0;left:0}
-
+/*loading*/
 #loading{
     background: #fff;position: fixed;width: 100%;top:0;bottom:0 ;left: 0;z-index: 1000000;
 }

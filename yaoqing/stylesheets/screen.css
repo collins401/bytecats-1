@@ -23,6 +23,12 @@ body {
   margin: 0 auto;
   font:400 1em/1.4 'open_sansbold',san-serif;
 }
+a{
+  text-decoration: none;
+}
+img{
+  border:0;max-width: 100%;vertical-align: middle;
+}
 /* line 85, ../sass/screen.scss */
 section.scene {
   position: absolute;
@@ -35,52 +41,49 @@ section.scene {
   -webkit-background-size: cover;
 }
 section.scene:nth-child(1){
-  background:url(../img/a.jpg) no-repeat;background-size: cover;
+  background:url(../img/first.png) no-repeat;background-size: cover;
   -webkit-background-size: cover;
 }
 section.scene:nth-child(2){
-   background:url(../img/b.jpg) no-repeat;background-size: cover;
+   background:url(../img/a.png) no-repeat;background-size: cover;
   -webkit-background-size: cover;
 }
 section.scene:nth-child(3){
-   background:url(../img/c.jpg) no-repeat;background-size: cover;
+   background:url(../img/b.png) no-repeat;background-size: cover;
   -webkit-background-size: cover;
 }
 section.scene:nth-child(4){
-   background:url(../img/d.jpg) no-repeat;background-size: cover;
+   background:url(../img/c.jpg) no-repeat;background-size: cover;
   -webkit-background-size: cover;
 }
 section.scene:nth-child(5){
-   background:url(../img/e.jpg) no-repeat;background-size: cover;
+   background:url(../img/d.png) no-repeat;background-size: cover;
   -webkit-background-size: cover;
 }
 section.scene:nth-child(6){
-   background:url(../img/f.jpg) no-repeat;background-size: cover;
+   background:url(../img/e.png) no-repeat;background-size: cover;
   -webkit-background-size: cover;
 }
 section.scene:nth-child(7){
-   background:url(../img/g.jpg) no-repeat;background-size: cover;
+   background:url(../img/f.jpg) no-repeat;background-size: cover;
   -webkit-background-size:  cover;
 }
-/* line 93, ../sass/screen.scss */
 section.scene.one {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/* line 98, ../sass/screen.scss */
 section.scene.one.active {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/* line 103, ../sass/screen.scss */
 section.scene.one.after {
   -webkit-transform: translate3d(0, -100%, 0);
   -moz-transform: translate3d(0, -100%, 0);
   transform: translate3d(0, -100%, 0);
 }
-/* line 108, ../sass/screen.scss */
+
 section.scene.one span.scroll-indicator {
   font-size: 15px;
   font-size: 0.9375rem;
@@ -99,46 +102,40 @@ section.scene.one span.scroll-indicator {
   -moz-animation: pulse 1s infinite;
   animation: pulse 1s infinite;
 }
-/* line 126, ../sass/screen.scss */
 section.scene.two {
   -webkit-transform: translate3d(0, 100%, 0);
   -moz-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
 }
-/* line 131, ../sass/screen.scss */
 section.scene.two.active {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/* line 136, ../sass/screen.scss */
 section.scene.two.after {
   -webkit-transform: translate3d(0, -100%, 0);
   -moz-transform: translate3d(0, -100%, 0);
   transform: translate3d(0, -100%, 0);
 }
-/* line 141, ../sass/screen.scss */
-
-/* line 234, ../sass/screen.scss */
-section.scene div.container {
-  position: relative;
-  text-align: center;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+.f-txt2{
+    margin:30px 10px 0;text-align: center;
 }
-/* line 242, ../sass/screen.scss */
-section.scene h1 {
-  text-align: center;
-  -webkit-transition: all .35s ease-out;
-  color: white;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+.f-txt2 .f-title{
+    display: block;margin: 0 auto;width: 120px;
 }
-/* line 248, ../sass/screen.scss */
-section.scene a {
-  text-decoration: underline;
-  color: white;
+.panel-txt{
+    background: rgba(252,252,252,.65);margin-top: -40px;padding: 40px 20px 10px;text-align: left;
+    line-height: 1.5
+}
+.bm{
+    width: 200px;height:50px;background: #F48D00;display:block;
+    text-align: center;line-height: 50px;border-radius: 5px;
+    text-decoration: none;
+    color:#fff;
+    margin: 30px auto 0;
+    font-size: 18px;
+    z-index: 9999;
+    position: relative;
 }
 /*功能*/
 .nav{
@@ -152,7 +149,7 @@ section.scene a {
   text-shadow:1px 1px 1px #f60;
 }
 /*音乐MP3*/
-#musicControl { position:fixed;right:10px;top:50%;margin-top:-27px;display:inline-block;z-index:99999999}
+#musicControl { position:fixed;right:10px;top:50%;margin-top:-27px;display:inline-block;z-index:9999}
 #musicControl a { display:inline-block;width:46px;height:46px;overflow:hidden;background-image:url('../img/mcbg.png');background-repeat: no-repeat ;background-size:100%;}
 #musicControl a audio{width:100%;height:50px;}
 #musicControl a.stop { background-position:1px bottom;}
@@ -166,3 +163,12 @@ section.scene a {
   100%{-webkit-transform: rotateZ(360deg);}
 }
 #music_play_filter{width:100%;height:100%;overflow:hidden;position:fixed;top:0;left:0}
+
+#loading{
+    background: #fff;position: fixed;width: 100%;top:0;bottom:0 ;left: 0;z-index: 1000000;
+}
+.bokeh{
+  width: 120px;height: 80px;border-radius: 5px;
+  background: #666 url(../img/loading.gif) no-repeat center center;
+  position: absolute;top:50%;left: 50%;margin-left:-40px;margin-top: -70px;
+}

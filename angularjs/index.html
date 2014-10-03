@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>angularjs demo</title>
+	<link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+            <div class="grid-1-4 col-center">
+                <h1 class="logo-txt ">AngularJS Demo™</h1>
+            </div>
+            <div class="grid-3-4">
+                <ul class="nav" ng-controller="navCtrl">
+                    <li ng-class="{actives:isActive('/')}"><a href="#">Home</a></li>
+                    <li ng-class="{actives:isActive('/tabs')}"><a href="#/tabs">Tabs</a></li>
+                    <li ng-class="{actives:isActive('/form')}"><a href="#/form">Form-Validate</a></li>
+                    <li ng-class="{actives:isActive('/loading')}"><a href="#/loading">Loading</a></li>
+                    <li ng-class="{actives:isActive('/animate')}"><a href="#/animate">Animate</a></li>
+                </ul>
+            </div>
+
+		 </div>	
+	</header>
+    <div class="banner">
+        <div class="container">
+            <h1 ng-bind="title"></h1>
+            <p ng-bind="info"></p>
+            <div class="angularjs-logo">
+                <img src="./images/AngularJS-large.png" alt="">
+            </div>
+        </div>
+       
+    </div>
+	<div class="container" ng-view ng-animate="{enter: 'view-enter'}">
+		
+	</div>
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.js"></script>
+    <script src="js/app.js"></script> 
+</body>
+</html>

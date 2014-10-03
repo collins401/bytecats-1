@@ -173,6 +173,7 @@ section.scene.two.after {
   z-index: 10000;
   text-shadow:1px 1px 1px #f60;
 }
+.nav a{color:#fff;}
 /*音乐MP3*/
 #musicControl { position:fixed;right:10px;top:50%;margin-top:-27px;display:inline-block;z-index:9999}
 #musicControl a { display:inline-block;width:46px;height:46px;overflow:hidden;background-image:url('../img/mcbg.png');background-repeat: no-repeat ;background-size:100%;}

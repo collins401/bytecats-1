@@ -1,0 +1,322 @@
+section[data-id="1"] {
+	background:#E3F2F6 url(../img/1-bg.png) no-repeat;
+	background-size: 100% auto;
+}
+section[data-id="2"] {
+	background:url(../img/2-bg.jpg) no-repeat;
+	background-size: 100% auto;
+}
+section[data-id="3"] {
+	background:#8CC8E5 url(../img/3-bg.jpg) no-repeat;
+	background-size: 100% auto;
+}
+section[data-id="4"] {
+	background:#545454 url(../img/4-bg.jpg) no-repeat;
+	background-size: 100% auto;
+}
+section[data-id="5"] {
+	background:#5F5132 url(../img/5-bg.jpg) no-repeat;
+	background-size: 100% auto;
+}
+section[data-id="6"] {
+	background:#211510 url(../img/6-bg.jpg) no-repeat;
+	background-size: 100% auto;
+}
+section[data-id="7"] {
+	background:#333 url(../img/7-bg.jpg) no-repeat;
+	background-size: 100% auto;
+}
+.box1-logo{
+	width: 60%;
+	position: absolute;
+	left: 0;right: 0;top:0;bottom: 0;
+	margin: auto;
+}
+.box1-e{
+	width: 30%;
+	margin: 20px auto 0;
+	display: block;
+}
+.box1-brand,.box1-info,.box1-title{
+	width: 90%;
+	margin: 20px auto 0;
+	display: block;
+}
+.box1-info{
+	margin: 0 auto;
+}
+.title-round{
+	display: block;
+	width: 44%;
+	margin: 15px auto 0;
+}
+.box2-timeline{
+	width: 3.6%;
+	left: 0;right: 0;
+	margin: auto;
+	position: absolute;
+}
+.box2-txt1,.box2-txt3{
+	width: 35%;margin-right: 55%;margin-top: 20px;
+	float: right;
+}
+.box2-txt2{
+	width: 37%;margin-right: 55%;margin-top: 25px;
+	float: right;
+}
+.box2-txt4{
+	width: 25%;margin-right: 55%;margin-top: 25px;
+	float: right;
+}
+.box2-media{
+	position: absolute;left: 55%;
+	width: 40%;
+	top:30%;
+}
+.box3-txt1,.box3-txt2{
+	margin: 20px auto 0;
+}
+.box4-txt,.box5-txt{
+	width: 42%;
+	display: block;
+	margin: 1.2em auto 0;
+}
+.box5-txt{
+	width: 100%;
+}
+.box6-txt{
+	margin: 20px auto;
+	width: 100%;
+	display: block;
+}
+.box7-txt1{
+	margin: 100px auto 20px;
+	width: 86%;
+	display: block;
+}
+.box7-txt2{
+	margin: 0 auto;
+	width: 90%;
+	display: block;
+}
+/*菜单*/
+#J_Shade {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: .2;
+	-webkit-transform: translate3d(0,0,0);
+	z-index: 97;
+	transition:all 0.35s linear;
+	-webkit-transition:all 0.35s linear;
+}
+.taoplus {
+	position: fixed;
+	border-left: 1px solid transparent;
+	bottom: 10px;
+	left: 0;
+	padding-left: 10px;
+	z-index: 99;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+}
+.taoplus .tpbtn {
+	position: relative;
+	width: 54px;
+	height: 54px;
+	z-index:99;
+}
+.taoplus .tpbtn, .taoplus .icontao, .taoplus .iconlogis, .taoplus .iconww, .taoplus .iconcar, .taoplus .tpicons, .taoplus .cart span {
+	background: url(../img/sprite1.png) no-repeat;
+	-webkit-background-size: 195px 274px;
+}
+.taoplus .more .bg, .taoplus .logis .bg, .taoplus .ww .bg, .taoplus .individ .bg, .taoplus .car .bg, .taoplus .search .bg, .taoplus .tplogo .bg {
+	background: url(../img/sprite2.png) no-repeat;
+	-webkit-background-size: 216px 212.5px;
+}
+.taoplus .tpbtn.on {
+	background-position: 1px -197px;
+}
+.taoplus .tpbtn.off {
+background-position: -55.2px -197px;
+}
+.taoplus .tpbtn div {
+	position: absolute;
+	left: 8px;
+	top: 8px;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 200px;
+	-webkit-border-radius: 200px;
+}
+.taoplus .tpbtn ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	overflow: hidden;
+}
+.taoplus .tpbtn .icontao {
+	background-position: -107px -200px;
+}
+.taoplus .tpbtn ul li {
+	width: 40px;
+	height: 40px;
+	float: left;
+	overflow: hidden;
+}
+.taoplus .circle {
+	position: absolute;
+	left: 30px;
+	bottom: 30px;
+	width: 195px;
+	height: 195px;
+	overflow: hidden;
+	-webkit-transition: all linear .15s;
+}
+.taoplus .circle.hide {
+	opacity: 0;
+	-webkit-transform: translate(-100px,100px) scale(0.2);
+	pointer-events: none;
+}
+.taoplus .circle.show {
+	opacity: 1;
+	-webkit-transform: translate(0px,0) scale(1);
+	pointer-events: auto;
+}
+.taoplus .tpicons {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 195px;
+	height: 195px;
+	overflow: hidden;
+}
+.taoplus .tplogo {
+	position: absolute;
+	left: 58px;
+	top: 58px;
+	width: 81px;
+	height: 82px;
+}
+.taoplus .tplogo a {
+position: absolute;
+left: 15px;
+top: 15px;
+display: block;
+width: 50px;
+height: 50px;
+background-position: -100px 100px;
+text-indent: -999px;
+z-index: 1;
+}
+.taoplus .tplogo a+.bg {
+position: absolute;
+width: 82px;
+height: 82px;
+left: 0;
+top: 0;
+background-position: -100px 100px;
+z-index: 0;
+}
+.taoplus .tplogo a:hover+.bg {
+background-position: -84px -67px;
+}
+.taoplus .tpicons ul li {
+position: absolute;
+}
+.taoplus .tpicons .more {
+right: 22px;
+bottom: 9px;
+width: 76px;
+height: 64px;
+}
+.taoplus .tpicons .logis {
+left: 22px;
+bottom: 10px;
+width: 78px;
+height: 63px;
+}
+.taoplus .tpicons .ww {
+left: 9px;
+top: 54px;
+width: 51px;
+height: 91px;
+}
+.taoplus .tpicons .individ {
+left: 20px;
+top: 10px;
+width: 79px;
+height: 67.5px;
+}
+.taoplus .tpicons .car {
+right: 20px;
+top: 10px;
+width: 77px;
+height: 69px;
+}
+.taoplus .tpicons .search {
+right: 10px;
+top: 56px;
+width: 51px;
+height: 91px;
+}
+.taoplus .tpicons a {
+display: inline-block;
+position: absolute;
+width: 40px;
+height: 30px;
+}
+.taoplus .tpicons .more a {
+top: 20px;
+left: 10px;
+}
+.taoplus .tpicons .more a:hover+.bg {
+background-position: 0 0;
+}
+.taoplus .tpicons a+.bg {
+display: block;
+height: 100%;
+background-position: -100px 100px;
+}
+.taoplus .tpicons .logis a {
+top: 20px;
+left: 30px;
+}
+.taoplus .tpicons .logis a:hover+.bg {
+background-position: -80px 0;
+}
+.taoplus .tpicons .ww a {
+top: 30px;
+left: 0;
+}
+.taoplus .tpicons .ww a:hover+.bg {
+background-position: -165px 0;
+}
+.taoplus .tpicons .individ a {
+top: 15px;
+left: 25px;
+}
+.taoplus .tpicons .individ a:hover+.bg {
+background-position: 0 -67.5px;
+}
+.taoplus .tpicons .car a {
+top: 15px;
+left: 15px;
+}
+.taoplus .tpicons .car a:hover+.bg {
+background-position: 0 -140px;
+}
+.taoplus .tpicons .search a {
+top: 25px;
+left: 10px;
+z-index: 99;
+}
+.taoplus .tpicons .search a:hover+.bg {
+background-position: -165px -95px;
+}

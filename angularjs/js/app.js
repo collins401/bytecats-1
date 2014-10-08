@@ -7,9 +7,15 @@ angular.module('demo', [])
     .controller('tabsCtrl', ['$scope', function ($scope) {
     	
     }])
-    .controller('formCtrl', ['$scope', function ($scope) {
-    	
-    }])
+    .controller('formsCtrl',function ($scope,$rootScope,$http) {
+
+      $scope.submit = function(){
+      if ($scope.regForm.$valid) {
+        alert('good');
+      }
+
+      }
+    })
     .controller('loadingCtrl', ['$scope', function ($scope) {
     	
     }])
@@ -19,16 +25,19 @@ angular.module('demo', [])
 			controller: 'tabsCtrl',
 			title: 'tabs',
 			info: '一个简单的选项卡切换效果'
+	
 		}).when('/form', {
 			templateUrl: '../page/form.html',
-			controller: 'formtCtrl',
+		  controller: 'formsCtrl',
 			title: 'form validate',
 			info: '基本表单验证代码'
+	
 		}).when('/', {
 	        templateUrl: '../page/tabs.html',
 	        controller: 'tabsCtrl',
 	        title: 'Demo™',
 			info: '我的AngularJS学习笔记'
+
 	    }).when('/loading', {
 	        templateUrl: '../page/loading.html',
 	        controller: 'loadingCtrl',
@@ -54,6 +63,6 @@ angular.module('demo', [])
 	.run(['$location', '$rootScope', function($location, $rootScope) {
      $rootScope.$on("$routeChangeSuccess", function(event, currentRoute, previousRoute) {
         $rootScope.title = currentRoute.title;
-         $rootScope.info = currentRoute.info;
+        $rootScope.info = currentRoute.info;
     });
 }])

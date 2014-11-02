@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+</head>
+<body>
+		<script type="text/javascript">
+	
+			setCookie( "foo", "bars", 5 );
+			getCookie('foo');
+
+			var kk = getCookie('foo');
+
+				if( kk == 'bars'){
+						alert('s');
+				}
+
+			
+	
+
+function setCookie( name, value, days ){
+	// 定义一个为name的空值cookie
+	if( value === undefined ){
+		var cookiestring = "; " + window.document.cookie;
+		var cookies = cookiestring.split( "; " + name + "=" );
+		if ( cookies.length === 2 ){
+			return cookies.pop().split( ";" ).shift();
+		}
+		return null;
+	}
+	else {
+		// value 为 flase 时，删除name的cookie
+		if( value === false ){
+			days = -1;
+		}
+		var expires;
+		if ( days ) {
+			var date = new Date();
+			date.setTime( date.getTime() + ( days * 24 * 60 * 60 * 1000 ) );
+			expires = "; expires="+date.toGMTString();
+		}
+		else {
+			expires = "";
+		}
+		window.document.cookie = name + "=" + value + expires;
+	}
+}
+function getCookie(c_name){
+
+	if (document.cookie.length>0){  //如果cookie不为空
+ 
+		c_start=document.cookie.indexOf(c_name + "=")  //查找cookie中c_name的位置
+		if (c_start!=-1){//如果找到c_name
+		 
+			c_start=c_start + c_name.length+1//c_start的位置是c_name的值的首位置 
+
+			c_end=document.cookie.indexOf(";",c_start)//c_name的值以“;”结束，找到结束位置
+
+			if (c_end==-1) c_end=document.cookie.length//如果没有找到";"，则结束位置在最后，即cookie只保存了c_name
+
+			return unescape(document.cookie.substring(c_start,c_end))//返回c_name的值，并解码
+		} 
+	}
+	return ""
+}
+	</script>
+</body>
+</html>
